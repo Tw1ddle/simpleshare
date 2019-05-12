@@ -8,8 +8,6 @@ import neko.Lib;
 import openfl.Lib;
 #end
 
-import com.stencyl.behavior.Script;
-import com.stencyl.behavior.Script.*;
 import openfl.display.BitmapData;
 import openfl.utils.ByteArray;
 import openfl.geom.Rectangle;
