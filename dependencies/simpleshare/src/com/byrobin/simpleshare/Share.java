@@ -56,12 +56,12 @@ public class Share extends Extension
     private static boolean shareFailed = false;
 
     public static void shareContent(final String msg, final String url, final boolean withImage)
-	{
+    {
         
         mainActivity.runOnUiThread(new Runnable()
         {
-        	public void run()
-			{
+            public void run()
+            {
                 
                 if(!withImage)
                 {
@@ -69,7 +69,13 @@ public class Share extends Extension
                     Intent intent = new Intent(android.content.Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     intent.putExtra(Intent.EXTRA_TEXT, msg + "\n\n" + url);
-                    Extension.mainContext.startActivity(Intent.createChooser(intent, "Share via.."));
+
+                    try {
+                        Extension.mainContext.startActivity(Intent.createChooser(intent, "Share via.."));
+                    } catch(ActivityNotFoundException e) {
+                        Log.e("Failed to share, no suitable applications found");
+                    }
+                    
                     
                     shareSucceed = true;
                     shareFailed = false;
@@ -118,7 +124,12 @@ public class Share extends Extension
                 intent.setType("image/*");
                 intent.putExtra(Intent.EXTRA_TEXT, msg + "\n\n" + url);
                 intent.putExtra(Intent.EXTRA_STREAM, fileUri);
-                Extension.mainContext.startActivity(Intent.createChooser(intent, "Share via.."));
+
+                try {
+                    Extension.mainContext.startActivity(Intent.createChooser(intent, "Share via.."));
+                } catch(ActivityNotFoundException e) {
+                    Log.e("Failed to share, no suitable applications found");
+                }
                 
                 shareSucceed = true;
                 shareFailed = false;
