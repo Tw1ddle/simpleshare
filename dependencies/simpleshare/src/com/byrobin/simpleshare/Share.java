@@ -10,6 +10,7 @@ package com.byrobin.simpleshare;
 import org.haxe.lime.*;
 import android.content.Intent;
 
+import android.content.ActivityNotFoundException;
 import android.app.Activity;
 import android.content.res.AssetManager;
 import android.content.Context;
