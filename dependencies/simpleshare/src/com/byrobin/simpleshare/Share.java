@@ -74,7 +74,7 @@ public class Share extends Extension
                     try {
                         Extension.mainContext.startActivity(Intent.createChooser(intent, "Share via.."));
                     } catch(ActivityNotFoundException e) {
-                        Log.e("Failed to share, no suitable applications found");
+                        Log.e("SimpleShareExtension", "Failed to share, no suitable applications found");
                     }
                     
                     
@@ -129,7 +129,7 @@ public class Share extends Extension
                 try {
                     Extension.mainContext.startActivity(Intent.createChooser(intent, "Share via.."));
                 } catch(ActivityNotFoundException e) {
-                    Log.e("Failed to share, no suitable applications found");
+                    Log.e("SimpleShareExtension", "Failed to share, no suitable applications found");
                 }
                 
                 shareSucceed = true;
